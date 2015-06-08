@@ -1,0 +1,48 @@
+body {
+  background: #f1f1f1; }
+  body div.wrapper {
+    width: 1024px;
+    margin: 0 auto;
+    background: #DACE9C;
+    padding: 20px 0 0 0;
+    overflow: hidden; }
+    body div.wrapper header {
+      overflow: hidden;
+      padding: 20px 0 20px 0; }
+    body div.wrapper nav #main_menu {
+      margin: 0 0 0 150px; }
+      body div.wrapper nav #main_menu li {
+        float: left;
+        margin: 0 20px 0 0; }
+      body div.wrapper nav #main_menu a {
+        display: block; }
+    body div.wrapper article {
+      float: right;
+      width: 545px;
+      padding: 0 0 30px 10px;
+      margin: 60px 60px 0 0;
+      background: -webkit-radial-gradient(top left, #DACE9C, #E5DD92);
+      /* Safari 5.1 to 6.0 */
+      background: -o-radial-gradient(top left, #DACE9C, #E5DD92);
+      /* For Opera 11.6 to 12.0 */
+      background: -moz-radial-gradient(top left, #DACE9C, #E5DD92);
+      /* For Firefox 3.6 to 15 */
+      background: radial-gradient(top left, #DACE9C, #E5DD92);
+      /* Standard syntax */
+      box-shadow: 2px 2px 5px 1px rgba(193, 178, 109, 0.7);
+      height: 500px; }
+    body div.wrapper aside {
+      float: left;
+      width: 278px;
+      margin: 0 120px 0 10px;
+      color: #C8C590;
+      background-color: #35352D;
+      height: 500px; }
+    body div.wrapper footer {
+      float: left;
+      width: 1024px; }
+
+ul {
+  list-style: none; }
+
+/*# sourceMappingURL=style.css.map */

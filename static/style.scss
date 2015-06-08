@@ -1,0 +1,72 @@
+$sidebar-color: #35352D;
+$sidebar-text-color: #C8C590;
+$body-color: #DACE9C;
+$article-background-color1: #DACE9C;
+$article-background-color2: #E5DD92;
+
+@mixin radial-gradient($from-color, $to-color) {
+	background: -webkit-radial-gradient(top left, $from-color, $to-color); /* Safari 5.1 to 6.0 */
+	background: -o-radial-gradient(top left, $from-color, $to-color); /* For Opera 11.6 to 12.0 */
+	background: -moz-radial-gradient(top left, $from-color, $to-color); /* For Firefox 3.6 to 15 */
+	background: radial-gradient(top left, $from-color, $to-color); /* Standard syntax */
+}
+
+body {
+	background: #f1f1f1;
+
+	div.wrapper {
+		width: 1024px;
+		margin: 0 auto;
+		background: $body-color;
+		padding: 20px 0 0 0;
+		overflow: hidden;
+
+		header {
+			overflow: hidden;
+			padding: 20px 0 20px 0;
+		}
+
+		nav #main_menu {
+			margin: 0 0 0 150px;
+
+			li {
+				float: left;
+				margin: 0 20px 0 0;
+			}
+
+			a {
+				display: block;
+			}
+		}
+
+		article {
+			float: right;
+			width: 545px;
+			padding: 0 0 30px 10px;
+			margin: 60px 60px 0 0;
+			@include radial-gradient($article-background-color1, $article-background-color2);
+			box-shadow: 2px 2px 5px 1px rgba(193, 178, 109, 0.7);
+			height: 500px;
+		}
+
+		aside {
+			float: left;
+			width: 278px;
+			margin: 0 120px 0 10px;
+			color: $sidebar-text-color;
+			background-color: $sidebar-color;
+			height: 500px;
+		}
+
+		footer {
+			float: left;
+			width: 1024px;
+		}
+
+	}
+}
+
+
+ul {
+	list-style: none;
+}
