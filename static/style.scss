@@ -3,6 +3,8 @@ $sidebar-text-color: #C8C590;
 $body-color: #DACE9C;
 $article-background-color1: #DACE9C;
 $article-background-color2: #E5DD92;
+$header-background-color1: rgb(179, 167, 117);
+$header-background-color2: rgb(221, 210, 146);
 
 @mixin radial-gradient($from-color, $to-color) {
 	background: -webkit-radial-gradient(top left, $from-color, $to-color); /* Safari 5.1 to 6.0 */
@@ -11,31 +13,63 @@ $article-background-color2: #E5DD92;
 	background: radial-gradient(top left, $from-color, $to-color); /* Standard syntax */
 }
 
+@mixin linear-gradient($from-color, $to-color) {
+	background: -webkit-linear-gradient($from-color, $to-color); /* Safari 5.1 to 6.0 */
+	background: -o-linear-gradient($from-color, $to-color); /* For Opera 11.6 to 12.0 */
+	background: -moz-linear-gradient($from-color, $to-color); /* For Firefox 3.6 to 15 */
+	background: linear-gradient($from-color, $to-color); /* Standard syntax */
+}
+
 body {
 	background: #f1f1f1;
+
 
 	div.wrapper {
 		width: 1024px;
 		margin: 0 auto;
 		background: $body-color;
-		padding: 20px 0 0 0;
+		padding: 0px 0 0 0;
 		overflow: hidden;
 
 		header {
-			overflow: hidden;
 			padding: 20px 0 20px 0;
+			height: 130px;
+			margin-top: 30px;
+			@include linear-gradient($header-background-color1, $header-background-color2);
+			box-shadow: 2px 2px 5px 1px rgba(195, 181, 116, 0.7);
 		}
 
 		nav #main_menu {
-			margin: 0 0 0 150px;
-
+			margin: 30px 0 0 150px;
+			list-style: none;
+			font-weight: lighter;
+			
 			li {
 				float: left;
 				margin: 0 20px 0 0;
-			}
 
-			a {
-				display: block;
+				a {
+					display: block;
+				}
+
+				a:link {
+					color: black;
+					text-decoration: none;
+				}
+				a:visited {
+					color: black;
+					text-decoration: none;
+				}
+
+				a:hover {
+					color: black;
+					text-decoration: underline;
+				}
+
+				a:active {
+					color: black;
+					text-decoration: underline;
+				}
 			}
 		}
 
@@ -52,21 +86,35 @@ body {
 		aside {
 			float: left;
 			width: 278px;
-			margin: 0 120px 0 10px;
+			margin: 10px 120px 0 10px;
+			padding-top: 270px;
+			text-align: center;
 			color: $sidebar-text-color;
 			background-color: $sidebar-color;
+			box-shadow: 2px 2px 5px 1px rgba(87, 82, 60, 0.7);
 			height: 500px;
+
+			hr {
+				margin-right: 10px;
+				margin-left: 10px;
+				border-color: $sidebar-text-color;
+			}
 		}
 
 		footer {
 			float: left;
 			width: 1024px;
+			text-align: center;
+			margin-top: 30px;
 		}
 
 	}
 }
 
+h3 {
+	font-size: 0.90em;
+}
 
-ul {
-	list-style: none;
+html {
+	font-family: 'Lato', sans-serif;
 }

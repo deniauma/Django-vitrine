@@ -23,7 +23,7 @@
 	maximum-scale = 1.0 retains dimensions instead of zooming in if page width < device width (wrong for most sites)
 	-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 	{% load staticfiles %}
 	<!-- concatenate and minify for production -->
 	<link rel="stylesheet" href="{% static 'reset.css' %}" />
@@ -54,17 +54,31 @@
 	<meta property="og:image" content="" />
 </head>
 <body>
-<div class="wrapper"><!-- not needed? up to you: http://camendesign.com/code/developpeurs_sans_frontieres -->
+<div class="wrapper">
 	<aside>
-		<h2>Sidebar Content</h2>
+		<h3>Informations</h3>
+		<hr>
+		<br/>
+		<br/>
+		<h3>Suivez-moi sur:</h3>
+		<hr>
+		<br/>
+		<br/>
+		<h3>Partenaires</h3>
+		<hr>
+		<br/>
+		<br/>
 	</aside>
 	<header>	
 	</header>
 	<nav>
 		<ul id='main_menu'>
-			<li><a href="">Nav Link 1</a></li>
-			<li><a href="">Nav Link 2</a></li>
-			<li><a href="">Nav Link 3</a></li>
+			<li><a href="">Accueil</a></li>
+			<li><a href="">Contact</a></li>
+			<li><a href="">Tarifs</a></li>
+			<li><a href="">Prestations</a></li>
+			<li><a href="">Tarifs</a></li>
+			<li><a href="">Prendre rendez-vous</a></li>
 		</ul>
 	</nav>
 	<article>	
