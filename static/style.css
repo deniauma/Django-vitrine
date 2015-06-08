@@ -10,36 +10,32 @@ body {
       padding: 20px 0 20px 0;
       height: 130px;
       margin-top: 30px;
-      background: -webkit-linear-gradient(#b3a775, #ddd292);
-      /* Safari 5.1 to 6.0 */
-      background: -o-linear-gradient(#b3a775, #ddd292);
-      /* For Opera 11.6 to 12.0 */
-      background: -moz-linear-gradient(#b3a775, #ddd292);
-      /* For Firefox 3.6 to 15 */
-      background: linear-gradient(#b3a775, #ddd292);
-      /* Standard syntax */
+      background-image: url("img/header.png");
+      /*@include linear-gradient($header-background-color1, $header-background-color2);*/
       box-shadow: 2px 2px 5px 1px rgba(195, 181, 116, 0.7); }
-    body div.wrapper nav #main_menu {
-      margin: 30px 0 0 150px;
-      list-style: none;
-      font-weight: lighter; }
-      body div.wrapper nav #main_menu li {
-        float: left;
-        margin: 0 20px 0 0; }
-        body div.wrapper nav #main_menu li a {
-          display: block; }
-        body div.wrapper nav #main_menu li a:link {
-          color: black;
-          text-decoration: none; }
-        body div.wrapper nav #main_menu li a:visited {
-          color: black;
-          text-decoration: none; }
-        body div.wrapper nav #main_menu li a:hover {
-          color: black;
-          text-decoration: underline; }
-        body div.wrapper nav #main_menu li a:active {
-          color: black;
-          text-decoration: underline; }
+    body div.wrapper nav {
+      z-index: 2;
+      position: relative; }
+      body div.wrapper nav #main_menu {
+        margin: 30px 0 0 150px;
+        list-style: none; }
+        body div.wrapper nav #main_menu li {
+          float: left;
+          margin: 0 20px 0 0; }
+          body div.wrapper nav #main_menu li a {
+            display: block; }
+          body div.wrapper nav #main_menu li a:link {
+            color: black;
+            text-decoration: none; }
+          body div.wrapper nav #main_menu li a:visited {
+            color: black;
+            text-decoration: none; }
+          body div.wrapper nav #main_menu li a:hover {
+            color: black;
+            text-decoration: underline; }
+          body div.wrapper nav #main_menu li a:active {
+            color: black;
+            text-decoration: underline; }
     body div.wrapper article {
       float: right;
       width: 545px;
@@ -55,6 +51,13 @@ body {
       /* Standard syntax */
       box-shadow: 2px 2px 5px 1px rgba(193, 178, 109, 0.7);
       height: 500px; }
+    body div.wrapper #logo {
+      /*background-image: url("img/logo-transparent.png");
+      width = 1050px;
+      height = 247px;*/
+      float: left;
+      position: absolute;
+      z-index: 1; }
     body div.wrapper aside {
       float: left;
       width: 278px;
@@ -65,6 +68,36 @@ body {
       background-color: #35352D;
       box-shadow: 2px 2px 5px 1px rgba(87, 82, 60, 0.7);
       height: 500px; }
+      body div.wrapper aside .info {
+        display: inline-block;
+        height: 24px;
+        line-height: 24px;
+        background-image: url("img/icone-informations.png");
+        background-repeat: no-repeat;
+        background-size: 24px 24px;
+        background-position: left center;
+        padding-left: 30px;
+        vertical-align: middle; }
+      body div.wrapper aside .follow {
+        display: inline-block;
+        height: 24px;
+        line-height: 24px;
+        background-image: url("img/icone-bulles.png");
+        background-repeat: no-repeat;
+        background-size: 24px 24px;
+        background-position: left center;
+        padding-left: 30px;
+        vertical-align: middle; }
+      body div.wrapper aside .partners {
+        display: inline-block;
+        height: 24px;
+        line-height: 24px;
+        background-image: url("img/icone-partenaires.png");
+        background-repeat: no-repeat;
+        background-size: 24px 24px;
+        background-position: left center;
+        padding-left: 30px;
+        vertical-align: middle; }
       body div.wrapper aside hr {
         margin-right: 10px;
         margin-left: 10px;

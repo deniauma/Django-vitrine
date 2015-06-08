@@ -35,40 +35,45 @@ body {
 			padding: 20px 0 20px 0;
 			height: 130px;
 			margin-top: 30px;
-			@include linear-gradient($header-background-color1, $header-background-color2);
+			background-image: url("img/header.png");
+			/*@include linear-gradient($header-background-color1, $header-background-color2);*/
 			box-shadow: 2px 2px 5px 1px rgba(195, 181, 116, 0.7);
 		}
 
-		nav #main_menu {
-			margin: 30px 0 0 150px;
-			list-style: none;
-			font-weight: lighter;
-			
-			li {
-				float: left;
-				margin: 0 20px 0 0;
+		nav {
+			z-index: 2;
+			position: relative;
 
-				a {
-					display: block;
-				}
+			#main_menu {
+				margin: 30px 0 0 150px;
+				list-style: none;
+				
+				li {
+					float: left;
+					margin: 0 20px 0 0;
 
-				a:link {
-					color: black;
-					text-decoration: none;
-				}
-				a:visited {
-					color: black;
-					text-decoration: none;
-				}
+					a {
+						display: block;
+					}
 
-				a:hover {
-					color: black;
-					text-decoration: underline;
-				}
+					a:link {
+						color: black;
+						text-decoration: none;
+					}
+					a:visited {
+						color: black;
+						text-decoration: none;
+					}
 
-				a:active {
-					color: black;
-					text-decoration: underline;
+					a:hover {
+						color: black;
+						text-decoration: underline;
+					}
+
+					a:active {
+						color: black;
+						text-decoration: underline;
+					}
 				}
 			}
 		}
@@ -83,6 +88,15 @@ body {
 			height: 500px;
 		}
 
+		#logo {
+			/*background-image: url("img/logo-transparent.png");
+			width = 1050px;
+			height = 247px;*/
+			float: left;
+			position: absolute;
+			z-index: 1;
+		}
+
 		aside {
 			float: left;
 			width: 278px;
@@ -93,6 +107,42 @@ body {
 			background-color: $sidebar-color;
 			box-shadow: 2px 2px 5px 1px rgba(87, 82, 60, 0.7);
 			height: 500px;
+
+			.info {
+				display: inline-block;
+				height: 24px;
+				line-height: 24px;
+				background-image: url("img/icone-informations.png");
+				background-repeat: no-repeat;
+				background-size: 24px 24px;
+				background-position: left center;
+				padding-left: 30px;
+				vertical-align: middle;
+			}
+
+			.follow {
+				display: inline-block;
+				height: 24px;
+				line-height: 24px;
+				background-image: url("img/icone-bulles.png");
+				background-repeat: no-repeat;
+				background-size: 24px 24px;
+				background-position: left center;
+				padding-left: 30px;
+				vertical-align: middle;
+			}
+
+			.partners {
+				display: inline-block;
+				height: 24px;
+				line-height: 24px;
+				background-image: url("img/icone-partenaires.png");
+				background-repeat: no-repeat;
+				background-size: 24px 24px;
+				background-position: left center;
+				padding-left: 30px;
+				vertical-align: middle;
+			}
 
 			hr {
 				margin-right: 10px;
