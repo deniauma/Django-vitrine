@@ -1,4 +1,9 @@
 from django.contrib import admin
-from vitrine.models import Article
+from vitrine.models import Page, Navigation, Appointment
 
-admin.site.register(Article)
+class NavigationAdmin(admin.ModelAdmin):
+	list_display = ('link_label', 'link_order')
+
+admin.site.register(Page)
+admin.site.register(Navigation, NavigationAdmin)
+admin.site.register(Appointment)

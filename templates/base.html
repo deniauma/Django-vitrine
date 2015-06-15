@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
 	<!-- Important stuff for SEO, don't neglect. (And don't dupicate values across your site!) -->
-	<title>{% block title %}{% endblock %}</title>
+	<title>{% block title %}{{ page.page_title }}{% endblock %}</title>
 	<meta name="author" content="" />
 	<meta name="description" content="" />
 	
@@ -76,18 +76,15 @@
 	</header>
 	<nav>
 		<ul id='main_menu'>
-			<li><a href="">Accueil</a></li>
-			<li><a href="">Contact</a></li>
-			<li><a href="">Tarifs</a></li>
-			<li><a href="">Prestations</a></li>
-			<li><a href="">Tarifs</a></li>
-			<li><a href="">Prendre rendez-vous</a></li>
+			{%for link in navigation %}
+				<li><a href="{% url 'vitrine:page' link.link_page.page_slug %}">{{ link.link_label }}</a></li>
+			{% endfor %}
 		</ul>
 	</nav>
 	<article>	
 	{% block page_content %}
-		<h1>{{ article }}</h1>
-		<p>{{ article.article_content }}</p>
+		<h1>{{ page }}</h1>
+		<p>{{ page.page_content }}</p>
 	{% endblock %}
     </article>
 	<footer>
