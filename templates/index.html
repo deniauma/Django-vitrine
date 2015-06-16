@@ -3,6 +3,8 @@
 {% block title %}Eric Deniaud, practicien Reiki{% endblock %}
 
 {% block page_content %}
-	<h1>{{ page }}</h1>
-	<p>{{ page.page_content }}</p>
+	<h2>{{ labels.title.label_text|safe }}</h2>
+	{% for label in labels.content %}
+		{{ label.label_text|safe }}
+	{% endfor %}
 {% endblock %}
