@@ -1,0 +1,35 @@
+*** settings.py ***
+
+INSTALLED_APPS = (
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'vitrine',
+    'tinymce',
+)
+
+LANGUAGE_CODE = 'fr-fr'
+
+STATIC_ROOT = ''
+
+TINYMCE_DEFAULT_CONFIG = {
+    'width' : 500,
+    'height' : 200,
+}
+
+***************************************
+
+*** urls.py ***
+
+url(r'^admin/', include(admin.site.urls)),
+url(r'^tinymce/', include('tinymce.urls')),
+url(r'^', include('vitrine.urls', namespace="vitrine")),
+
+
+****************************************
+MySQL dump command:
+mysqldump -u root -p django_reiki vitrine_appointment vitrine_navigation vitrine_page vitrine_label > vitrine.sql
+
