@@ -12,6 +12,8 @@
 	<script src="{% static 'jquery.min.js' %}"></script>
 	<script src="{% static 'fullcalendar/fullcalendar.min.js' %}"></script>
 	<script src="{% static 'fullcalendar/lang/fr.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'fancybox/source/jquery.fancybox.css' %}" type="text/css" media="screen" />
+	<script type="text/javascript" src="{% static 'fancybox/source/jquery.fancybox.pack.js' %}"></script>
 {% endblock %}
 
 {% block page_content %}
@@ -22,6 +24,15 @@
 	<script>
 
 		$(document).ready(function() {
+	        $(".fancylink").fancybox({
+        		//maxWidth	: 400,
+        		//maxHeight	: 300,
+        		fitToView	: false,
+        		autoSize	: true,
+        		closeClick	: false,
+        		openEffect	: 'fade',
+        		closeEffect	: 'fade'
+        	});
 			
 			$('#calendar').fullCalendar({
 				header: {
@@ -37,7 +48,8 @@
 				businessHours: {start: '08:00', end: '19:00', dow: [ 1, 2, 3, 4, 5, 6 ]},
 				editable: false,
 				eventLimit: true, // allow "more" link when too many events
-				height: 500,
+				height: 400,
+				slotDuration: '01:00:00',
 				events: [
 					{
 						title: 'All Day Event',
@@ -45,53 +57,53 @@
 					},
 					{
 						title: 'Long Event',
-						start: '2015-02-07',
-						end: '2015-02-10'
+						start: '2015-08-07',
+						end: '2015-08-10'
 					},
 					{
 						id: 999,
 						title: 'Repeating Event',
-						start: '2015-07-28T16:00:00'
+						start: '2015-08-28T16:00:00'
 					},
 					{
 						id: 999,
 						title: 'Repeating Event',
-						start: '2015-02-16T16:00:00'
+						start: '2015-08-16T16:00:00'
 					},
 					{
 						title: 'Conference 10:00 - 11:00',
-						start: '2015-02-11',
+						start: '2015-08-11',
 						end: '2015-02-13'
 					},
 					{
 						title: 'Meeting',
-						start: '2015-02-12T10:30:00',
-						end: '2015-02-12T12:30:00'
+						start: '2015-08-12T10:30:00',
+						end: '2015-08-12T12:30:00'
 					},
 					{
 						title: 'Lunch',
-						start: '2015-02-12T12:00:00'
+						start: '2015-08-12T12:00:00'
 					},
 					{
 						title: 'Meeting',
-						start: '2015-02-12T14:30:00'
+						start: '2015-08-12T14:30:00'
 					},
 					{
 						title: 'Happy Hour',
-						start: '2015-02-12T17:30:00'
+						start: '2015-08-12T17:30:00'
 					},
 					{
 						title: 'Dinner',
-						start: '2015-02-12T20:00:00'
+						start: '2015-08-12T20:00:00'
 					},
 					{
 						title: 'Birthday Party',
-						start: '2015-02-13T07:00:00'
+						start: '2015-08-13T07:00:00'
 					},
 					{
 						title: 'Click for Google',
 						url: 'http://google.com/',
-						start: '2015-02-28'
+						start: '2015-08-28'
 					},
 					{% for event in schedule_events %}
 						{% if forloop.last %}
@@ -108,7 +120,13 @@
 							},
 					    {% endif %}
 					{% endfor %}
-				]
+				],
+
+			    dayClick: function(date, jsEvent, view) {
+			        $("#id_appointment_date").val(date.format('DD/MM/YYYY HH:ss')).attr('readonly', true);
+			        $(".fancylink").click();
+			        
+			    }
 			});
 			
 		});
@@ -127,4 +145,15 @@
 	</style>
 
 	<div id='calendar'></div>
+	<a class="fancylink" href="#schedule-form" style="display:none;"></a>
+	<div id="schedule-form" style="display:none;">
+		<p>Prendre un rendez-vous</p>
+		<form action ="{% url 'vitrine:create_appointment' %}" method="post">
+			{% csrf_token %}
+			<table>
+				{{ form.as_table }}
+			</table>
+			<input type="submit" value="Envoyer">
+		</form>
+	</div>
 {% endblock %}

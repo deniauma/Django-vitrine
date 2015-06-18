@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.views import generic
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.core.urlresolvers import reverse
 from vitrine.models import Page, Navigation, Appointment, Label
+from vitrine.forms import AppointmentForm
 
 def HomePage(request):
     page = Page.objects.filter(is_main_page=True).first()
@@ -44,4 +45,20 @@ class PageView(generic.DetailView):
             title = "Rendez-vous"
             schedule_events_momentjs.append({'start_date': start_date, 'end_date': end_date, 'title': title})
         context['schedule_events'] = schedule_events_momentjs
+        form = AppointmentForm()
+        context['form'] = form
         return context
+
+
+def create_appointment(request):
+    if request.method == 'POST':
+        form = AppointmentForm(request.POST)
+        if form.is_valid():
+
+            return JsonResponse({'created':'yes'})
+
+        else:
+            return JsonResponse({'created':'no'})
+            
+    else:
+        return JsonResponse({'created':'no'})
