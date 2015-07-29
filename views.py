@@ -12,7 +12,7 @@ class PageView(generic.DetailView):
     model = Page
     slug_field = 'page_slug'
     slug_url_kwarg = 'page_slug'
-    template_name = 'index.html'
+    template_name = 'calendar.html'
     def get_context_data(self, **kwargs):
         context = super(PageView, self).get_context_data(**kwargs)
         navigation_links = Navigation.objects.all().order_by('link_order')
