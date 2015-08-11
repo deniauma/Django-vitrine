@@ -2,7 +2,7 @@
 from django import forms
 
 class AppointmentForm(forms.Form):
-	appointment_date = forms.DateTimeField(label="Date du rendez-vous:", input_formats="%d/%m/%Y %H:%M")
+	appointment_date = forms.DateTimeField(label="Date du rendez-vous:", input_formats=['%d/%m/%Y %H:%M'])
 	appointment_lastName = forms.CharField(label="Nom:", max_length=50)
 	appointment_firstName = forms.CharField(label=u'Prénom:', max_length=50)
 	appointment_email = forms.EmailField(label="E-mail:")

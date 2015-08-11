@@ -69,3 +69,13 @@ class Appointment(models.Model):
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
     validated = models.BooleanField(default=False)
+    last_name = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50)
+    email = models.EmailField()
+    phone = models.CharField(max_length=15)
+    details = models.TextField(blank=True)
+
+
+class ClosingDay(models.Model):
+    date = models.DateField()
+    title = models.CharField(max_length=20)

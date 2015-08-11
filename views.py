@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.views import generic
 from django.http import HttpResponseRedirect, JsonResponse
 from django.core.urlresolvers import reverse
-from vitrine.models import Page, Navigation, Appointment, Label
+from vitrine.models import Page, Navigation, Appointment, Label, ClosingDay
 from vitrine.forms import AppointmentForm
+from datetime import timedelta
 
 def HomePage(request):
     page = Page.objects.filter(is_main_page=True).first()
@@ -35,7 +36,7 @@ class PageView(generic.DetailView):
         context_labels['content'] = label_contents
         context['labels'] = context_labels
 
-        #retrieve all appointments and add them to context
+        #retrieve all appointments, closing days and add them to context
         schedule_events = Appointment.objects.filter(validated=True)
         schedule_events_momentjs = []
         for event in schedule_events:
@@ -43,10 +44,16 @@ class PageView(generic.DetailView):
             start_date = event.start_date.strftime('%Y-%m-%dT%H:%M:%S')
             end_date = event.end_date.strftime('%Y-%m-%dT%H:%M:%S')
             title = "Rendez-vous"
-            schedule_events_momentjs.append({'start_date': start_date, 'end_date': end_date, 'title': title})
+            schedule_events_momentjs.append({'start_date': start_date, 'end_date': end_date, 'title': title, 'color': 'green'})
+        for day in ClosingDay.objects.all():
+            start_date = day.date.strftime('%Y-%m-%dT08:00:00')
+            end_date = day.date.strftime('%Y-%m-%dT20:00:00')
+            title = day.title
+            schedule_events_momentjs.append({'start_date': start_date, 'end_date': end_date, 'title': title, 'color': 'red'})
         context['schedule_events'] = schedule_events_momentjs
         form = AppointmentForm()
         context['form'] = form
+
         return context
 
 
@@ -54,11 +61,21 @@ def create_appointment(request):
     if request.method == 'POST':
         form = AppointmentForm(request.POST)
         if form.is_valid():
+            date = form.cleaned_data['appointment_date']
+            last_name = form.cleaned_data['appointment_lastName']
+            first_name = form.cleaned_data['appointment_firstName']
+            email = form.cleaned_data['appointment_email']
+            phone = form.cleaned_data['appointment_phone']
+            details = form.cleaned_data['appointment_details']
+            start_date = date
+            end_date = date + timedelta(hours=1)
+            appointment = Appointment(start_date = start_date, end_date = end_date, last_name = last_name, first_name = first_name, email = email, phone = phone, details = details)
+            appointment.save()
 
             return JsonResponse({'created':'yes'})
 
         else:
-            return JsonResponse({'created':'no'})
-            
+            return JsonResponse(form.errors.as_json(), safe=False)
+
     else:
-        return JsonResponse({'created':'no'})
+        return JsonResponse({'created':'no', 'error':'not a POST request'})
