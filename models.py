@@ -4,27 +4,13 @@ from tinymce.models import HTMLField
 
 # Create your models here.
 class Page(models.Model):
-    page_title = models.CharField(max_length=200)
-    page_content = models.TextField()
+    page_slug = models.CharField(max_length=200)
     creation_date = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
     is_main_page = models.BooleanField(default=False)
-    page_slug = models.CharField(max_length=200, blank=True)
     page_template = models.CharField(max_length=200, default='index.html')
-    page_html = HTMLField(null=True)
-
-    def get_title(self):
-        return self.page_title
-
-    def get_content(self):
-        return self.page_content
-
     def __unicode__(self):
-        return self.page_title
-
-    def save(self, *args, **kwargs):
-        self.page_slug = slugify(self.page_title)
-        super(Page, self).save(*args, **kwargs)
+        return self.page_slug
 
 
 class Label(models.Model):

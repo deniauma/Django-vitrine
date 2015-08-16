@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,QAAS;EACR,UAAU,EAAE,MAAM;;EAElB,OAAO,EAAE,gBAAgB;EAEzB,UAAE;IACD,aAAa,EAAE,GAAG;;AAIpB,WAAY;EACX,KAAK,EAAE,OAAO;EACd,UAAU,EAAE,MAAM;;AAGnB,YAAa;EACZ,KAAK,EAAE,OAAO;EACd,SAAS,EAAE,MAAM;;AAGlB,aAAc;EACb,UAAU,EAAE,MAAM",
+"sources": ["formation.scss"],
+"names": [],
+"file": "formation.css"
+}

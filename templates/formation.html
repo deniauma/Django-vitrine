@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Eric Deniaud, practicien Reiki{% endblock %}
+
+{% load staticfiles %}
+{% block css %}
+	<link rel="stylesheet" href="{% static 'formation.css' %}" />
+{% endblock %}
+{% block javascript %}
+	<link rel="stylesheet" href="{% static 'fancybox/source/jquery.fancybox.css' %}" type="text/css" media="screen" />
+	<script type="text/javascript" src="{% static 'fancybox/source/jquery.fancybox.pack.js' %}"></script>
+{% endblock %}
+
+{% block page_content %}
+	<h2>{{ labels.title.label_text|safe }}</h2>
+	{% for label in labels.content %}
+		{{ label.label_text|safe }}
+		<br/>
+	{% endfor %}
+	
+	<div class="gallery">
+		<a class="fancybox" rel="gallery1" href="{% static 'img/Diplome_Praticien_de_Reiki.jpg' %}" title="Diplôme Praticien de Reiki">
+			<img src="{% static 'img/Diplome_Praticien_de_Reiki.jpg' %}" alt="Diplôme Praticien de Reiki" width="180" />
+		</a>
+		<a class="fancybox" rel="gallery1" href="{% static 'img/Diplome_Reiki_1.jpg' %}" title="Diplôme de Reiki niveau I">
+			<img src="{% static 'img/Diplome_Reiki_1.jpg' %}" alt="Diplôme de Reiki niveau I" height="160"/>
+		</a>
+		<a class="fancybox" rel="gallery1" href="{% static 'img/Diplome_Reiki_2.jpg' %}" title="Diplôme de Reiki niveau II">
+			<img src="{% static 'img/Diplome_Reiki_2.jpg' %}" alt="Diplôme de Reiki niveau II" height="160"/>
+		</a>
+		<a class="fancybox" rel="gallery1" href="{% static 'img/Diplome_Reiki_3.jpg' %}" title="Diplôme de Reiki niveau III">
+			<img src="{% static 'img/Diplome_Reiki_3.jpg' %}" alt="Diplôme de Reiki niveau III" width="180"/>
+		</a>
+		<a class="fancybox" rel="gallery1" href="{% static 'img/Diplome_Massage_Chinois.jpg' %}" title="Diplôme de massage chinois">
+			<img src="{% static 'img/Diplome_Massage_Chinois.jpg' %}" alt="Diplôme de massage chinois" width="180"/>
+		</a>
+		<a class="fancybox" rel="gallery1" href="{% static 'img/Diplome_Ki_Magnetisme.jpg' %}" title="Dîplôme de Ki-Magnétisme">
+			<img src="{% static 'img/Diplome_Ki_Magnetisme.jpg' %}" alt="Dîplôme de Ki-Magnétisme" width="180"/>
+		</a>
+		<p><span class="text-legend">Cliquez sur les images pour les agrandir.</span></p>
+	</div>
+
+	<script>
+
+		$(document).ready(function() {
+			$(".fancybox").fancybox({
+				openEffect	: 'none',
+				closeEffect	: 'none'
+			});
+		});
+
+	</script>
+{% endblock %}

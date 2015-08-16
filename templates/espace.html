@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Eric Deniaud, practicien Reiki{% endblock %}
+
+{% load staticfiles %}
+{% block css %}
+	<link rel="stylesheet" href="{% static 'formation.css' %}" />
+{% endblock %}
+{% block javascript %}
+	<link rel="stylesheet" href="{% static 'fancybox/source/jquery.fancybox.css' %}" type="text/css" media="screen" />
+	<script type="text/javascript" src="{% static 'fancybox/source/jquery.fancybox.pack.js' %}"></script>
+{% endblock %}
+
+{% block page_content %}
+	<h2>{{ labels.title.label_text|safe }}</h2>
+
+	{{ labels.content.0.label_text|safe }}
+	<div class="gallery">
+		<a class="fancybox" rel="gallery1" href="{% static 'img/espace-01.jpg' %}" title="Espace de travail">
+			<img src="{% static 'img/espace-01-small.jpg' %}" alt="Espace de travail" width="180" />
+		</a>
+		<a class="fancybox" rel="gallery1" href="{% static 'img/espace-02.jpg' %}" title="Espace de travail">
+			<img src="{% static 'img/espace-02-small.jpg' %}" alt="Espace de travail" width="180"/>
+		</a>
+		<a class="fancybox" rel="gallery1" href="{% static 'img/espace-03.jpg' %}" title="Espace de travail">
+			<img src="{% static 'img/espace-03-small.jpg' %}" alt="Espace de travail" width="180"/>
+		</a>
+		<p><span class="text-legend">Cliquez sur les images pour les agrandir.</span></p>
+	</div>
+
+	{{ labels.content.1.label_text|safe }}
+
+	<div class="simple-image">
+		<a class="fancybox" href="{% static 'img/salle-attente.jpg' %}" title="Salle d'attente">
+			<img src="{% static 'img/salle-attente-small.jpg' %}" alt="Salle d'attente" width="200" />
+		</a>
+	</div>
+
+	<script>
+
+		$(document).ready(function() {
+			$(".fancybox").fancybox({
+				openEffect	: 'none',
+				closeEffect	: 'none'
+			});
+		});
+
+	</script>
+{% endblock %}

@@ -33,3 +33,12 @@ url(r'^', include('vitrine.urls', namespace="vitrine")),
 MySQL dump command:
 mysqldump -u root -p django_reiki vitrine_appointment vitrine_navigation vitrine_page vitrine_label > vitrine.sql
 
+
+******************************************
+SASS
+
+apt-get install ruby
+gem install sass
+
+sass --watch input.scss:output.css
+sass --watch app/sass:public/stylesheets

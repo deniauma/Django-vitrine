@@ -1,6 +1,9 @@
 from django.contrib import admin
 from vitrine.models import Page, Navigation, Appointment, Label, ClosingDay
 
+class PageAdmin(admin.ModelAdmin):
+	list_display = ('page_slug', 'page_template')
+
 class NavigationAdmin(admin.ModelAdmin):
 	list_display = ('link_label', 'link_order')
 
@@ -14,7 +17,7 @@ class ClosingDayAdmin(admin.ModelAdmin):
 	list_display = ('date', 'title')
 
 
-admin.site.register(Page)
+admin.site.register(Page, PageAdmin)
 admin.site.register(Label, LabelAdmin)
 admin.site.register(Navigation, NavigationAdmin)
 admin.site.register(Appointment, AppointmentAdmin)
