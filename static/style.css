@@ -87,7 +87,8 @@ body {
         background-size: 24px 24px;
         background-position: left center;
         padding-left: 30px;
-        vertical-align: middle; }
+        vertical-align: middle;
+        margin: 15px 0 5px 0; }
       body div.wrapper aside .follow {
         display: inline-block;
         height: 24px;
@@ -97,7 +98,8 @@ body {
         background-size: 24px 24px;
         background-position: left center;
         padding-left: 30px;
-        vertical-align: middle; }
+        vertical-align: middle;
+        margin: 15px 0 5px 0; }
       body div.wrapper aside .partners {
         display: inline-block;
         height: 24px;
@@ -107,7 +109,8 @@ body {
         background-size: 24px 24px;
         background-position: left center;
         padding-left: 30px;
-        vertical-align: middle; }
+        vertical-align: middle;
+        margin: 15px 0 5px 0; }
       body div.wrapper aside hr {
         margin-right: 10px;
         margin-left: 10px;
@@ -123,6 +126,18 @@ h3 {
 
 html {
   font-family: 'Lato', sans-serif; }
+
+.left-menu-text {
+  font-size: 0.90em;
+  color: white; }
+  .left-menu-text a:link {
+    color: #8AB800; }
+  .left-menu-text a:visited {
+    color: #8AB800; }
+  .left-menu-text a:hover {
+    color: #8AB800; }
+  .left-menu-text a:active {
+    color: #8AB800; }
 
 .portrait {
   float: right;
