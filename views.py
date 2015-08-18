@@ -84,3 +84,31 @@ def create_appointment(request):
 
     else:
         return JsonResponse({'created':'no', 'error':'not a POST request'})
+
+
+def send_email(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['contact_name']
+            email = form.cleaned_data['contact_email']
+            message = form.cleaned_data['contact_message']
+
+            return render(request, 'form-result.html', {
+                'form': form,
+                'status': "success",
+            })
+
+        else:
+            return render(request, 'form-result.html', {
+                'form': form,
+                'status': "error",
+                'error_message': 'Le formulaire contient des erreurs!',
+            })
+
+    else:
+        return render(request, 'form-result.html', {
+            'form': form,
+            'status': "error",
+            'error_message': 'Une erreur technique est survenue!',
+        })
