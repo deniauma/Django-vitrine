@@ -16,31 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `vitrine_appointment`
---
-
-DROP TABLE IF EXISTS `vitrine_appointment`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `vitrine_appointment` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `start_date` datetime NOT NULL,
-  `end_date` datetime NOT NULL,
-  `validated` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `vitrine_appointment`
---
-
-LOCK TABLES `vitrine_appointment` WRITE;
-/*!40000 ALTER TABLE `vitrine_appointment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `vitrine_appointment` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `vitrine_navigation`
 --
 

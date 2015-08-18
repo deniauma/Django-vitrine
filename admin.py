@@ -8,7 +8,7 @@ class NavigationAdmin(admin.ModelAdmin):
 	list_display = ('link_label', 'link_order')
 
 class LabelAdmin(admin.ModelAdmin):
-	list_display = ('label_place', 'label_text')
+	list_display = ('label_page', 'label_place', 'label_text')
 
 class AppointmentAdmin(admin.ModelAdmin):
 	list_display = ('start_date', 'validated')

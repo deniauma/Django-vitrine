@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Eric Deniaud, practicien Reiki{% endblock %}
+
+{% block page_content %}
+	<h2>{{ labels.title.label_text|safe }}</h2>
+
+	{{ labels.content.0.label_text|safe }}
+
+	<div class="googlemap">
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10759.15853376775!2d-0.4616535691046832!3d47.610780036256614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9924107199cc77f0!2sDeniaud+Eric!5e0!3m2!1sfr!2sfr!4v1439893474513" width="500" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+	</div>
+
+	{{ labels.content.1.label_text|safe }}
+
+	<div class="contact-form">
+		<form action ="{% url 'vitrine:create_appointment' %}" method="post">
+			{% csrf_token %}
+			<table>
+				{{ contactForm }}
+				<tr><td id="form-submit" colspan="2"><input type="submit" value="Envoyer"></td></tr>
+			</table>
+		</form>
+	</div>
+
+{% endblock %}

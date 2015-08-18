@@ -124,4 +124,33 @@ h3 {
 html {
   font-family: 'Lato', sans-serif; }
 
+.portrait {
+  float: right;
+  padding: 10px 0 20px 20px; }
+
+.quote {
+  color: #088A08;
+  font-style: italic;
+  font-size: 1.20em;
+  text-shadow: 2px 2px 10px white; }
+
+.googlemap {
+  text-align: center; }
+
+.contact-form {
+  background-color: white; }
+  .contact-form th, .contact-form td {
+    width: 200px;
+    text-align: left;
+    padding-bottom: 5px;
+    font-weight: normal;
+    color: #484545; }
+
+.form-required label:after {
+  content: " *";
+  color: red; }
+
+#form-submit {
+  text-align: center; }
+
 /*# sourceMappingURL=style.css.map */
