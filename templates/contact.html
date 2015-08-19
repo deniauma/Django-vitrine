@@ -57,27 +57,30 @@
 			    }
 			});
 
-			$('.contact-form form').submit(function(event) {
-				var formData = {
-					'contact_name' : $('input[name=contact_name]').val(),
-					'contact_email' : $('input[name=contact_email]').val(),
-					'contact_message' : $('textarea[name=contact_message]').val()
-				}
+			function contactFormInit() {
+				$('.contact-form form').submit(function(event) {
+					var formData = {
+						'contact_name' : $('input[name=contact_name]').val(),
+						'contact_email' : $('input[name=contact_email]').val(),
+						'contact_message' : $('textarea[name=contact_message]').val()
+					}
 
-				$.ajax({
-					type: 'POST',
-					url: '{% url "vitrine:send_email" %}',
-					data: formData,
-					dataType: 'html',
-					encode: true
-				}).done(function(data) {
-					console.log(data);
-					$('.contact-form').html(data);
-				});
+					$.ajax({
+						type: 'POST',
+						url: '{% url "vitrine:send_email" %}',
+						data: formData,
+						dataType: 'html',
+						encode: true
+					}).done(function(data) {
+						console.log(data);
+						$('.contact-form').html(data);
+					});
 
-				event.preventDefault();
-			})
-			
+					event.preventDefault();
+				})
+			}
+
+			contactFormInit();
 		});
 
 	</script>

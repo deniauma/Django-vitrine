@@ -176,4 +176,16 @@ html {
 #form-submit {
   text-align: center; }
 
+.success-msg {
+  display: inline-block;
+  height: 64px;
+  line-height: 64px;
+  color: #088A08;
+  background-image: url("img/check_green.png");
+  background-repeat: no-repeat;
+  background-size: 64px 64px;
+  background-position: left center;
+  padding-left: 70px;
+  vertical-align: middle; }
+
 /*# sourceMappingURL=style.css.map */

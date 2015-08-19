@@ -42,3 +42,10 @@ gem install sass
 
 sass --watch input.scss:output.css
 sass --watch app/sass:public/stylesheets
+
+
+***********************************************
+Useful sites for icons
+
+- http://preloaders.net
+- https://www.iconfinder.com

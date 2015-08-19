@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from vitrine.models import Page, Navigation, Appointment, Label, ClosingDay
 from vitrine.forms import AppointmentForm, ContactForm
 from datetime import timedelta
+from django.core.mail import send_mail
 
 def HomePage(request):
     page = Page.objects.filter(is_main_page=True).first()
@@ -93,6 +94,8 @@ def send_email(request):
             name = form.cleaned_data['contact_name']
             email = form.cleaned_data['contact_email']
             message = form.cleaned_data['contact_message']
+
+            send_mail('Message', message, email, ['mathieu.deniaud@gmail.com'], fail_silently=False)
 
             return render(request, 'form-result.html', {
                 'form': form,
