@@ -15,7 +15,8 @@ body {
       box-shadow: 2px 2px 5px 1px rgba(195, 181, 116, 0.7); }
     body div.wrapper nav {
       z-index: 2;
-      position: relative; }
+      float: right;
+      padding-right: 50px; }
       body div.wrapper nav #main_menu {
         margin: 30px 0 0 150px;
         list-style: none; }
@@ -69,6 +70,8 @@ body {
       position: absolute;
       z-index: 1; }
     body div.wrapper aside {
+      position: absolute;
+      top: 0px;
       float: left;
       width: 278px;
       margin: 10px 100px 0 10px;
@@ -190,5 +193,68 @@ html {
 
 .facebook {
   padding-right: 10px; }
+
+.footnote {
+  display: inline-block;
+  line-height: 24px;
+  background-image: url("img/fleur.png");
+  background-repeat: no-repeat;
+  background-size: 30px 24px;
+  background-position: left center;
+  padding-left: 40px;
+  vertical-align: middle;
+  color: #088A08; }
+
+@media screen and (max-width: 600px) {
+  body div.wrapper {
+    width: 100%; }
+    body div.wrapper aside {
+      float: none;
+      padding-top: 0px;
+      width: 100%;
+      position: static;
+      margin: 0; }
+    body div.wrapper header {
+      display: none; }
+    body div.wrapper #logo {
+      position: static;
+      z-index: 0;
+      float: none;
+      margin-bottom: 10px;
+      background: -webkit-linear-gradient(#b3a775, #ddd292);
+      /* Safari 5.1 to 6.0 */
+      background: -o-linear-gradient(#b3a775, #ddd292);
+      /* For Opera 11.6 to 12.0 */
+      background: -moz-linear-gradient(#b3a775, #ddd292);
+      /* For Firefox 3.6 to 15 */
+      background: linear-gradient(#b3a775, #ddd292);
+      /* Standard syntax */
+      box-shadow: 2px 2px 5px 1px rgba(195, 181, 116, 0.7); }
+      body div.wrapper #logo img {
+        width: 130%; }
+    body div.wrapper article {
+      float: none;
+      width: 100%;
+      padding: 0 5px 0 5px;
+      margin: 0 0 0 0;
+      margin-bottom: 20px; }
+      body div.wrapper article p {
+        padding-right: 5px; }
+    body div.wrapper footer {
+      float: none;
+      width: 100%; }
+    body div.wrapper nav {
+      z-index: 0;
+      float: none;
+      padding: 0 0 0 0;
+      height: 60px; }
+      body div.wrapper nav #main_menu {
+        float: none;
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
+        overflow: hidden; }
+
+  .portrait {
+    width: 40%; } }
 
 /*# sourceMappingURL=style.css.map */
