@@ -26,6 +26,7 @@ class PageView(generic.DetailView):
         #retrieve all menu links and add them to context
         navigation_links = Navigation.objects.all().order_by('link_order')
         context['navigation'] = navigation_links
+        context['current_page'] = self.object.page_slug
 
         #retrieve all page labels and add them to context
         page_labels = Label.objects.filter(label_page=self.object.id).order_by('label_place')

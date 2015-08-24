@@ -20,6 +20,8 @@ TINYMCE_DEFAULT_CONFIG = {
     'height' : 200,
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 ***************************************
 
 *** urls.py ***
