@@ -189,24 +189,10 @@ html {
 .left-menu-text {
     font-size: 0.90em;
     color: white;
+}
 
-    a:link {
-        color: #8AB800;
-    }
-
-    a:visited {
-        color: #8AB800;
-    }
-
-    a:hover {
-        color: #8AB800;
-
-    }
-
-    a:active {
-        color: #8AB800;
-
-    }
+.left-menu-link:link, .left-menu-link:visited, .left-menu-link:hover, .left-menu-link:active {
+	    color: #8AB800;
 }
 
 .portrait {

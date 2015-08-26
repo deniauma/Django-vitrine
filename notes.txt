@@ -35,6 +35,14 @@ url(r'^', include('vitrine.urls', namespace="vitrine")),
 MySQL dump command:
 mysqldump -u root -p django_reiki vitrine_appointment vitrine_closingday vitrine_navigation vitrine_page vitrine_label > vitrine.sql
 
+mysqldump --compatible=postgresql --default-character-set=utf8 -u root -p reiki vitrine_appointment vitrine_closingday vitrine_navigation vitrine_page vitrine_label > vitrine-mysql.sql
+
+***POSTGRESQL commands:
+
+drop table vitrine_appointment, vitrine_closingday, vitrine_navigation, vitrine_page, vitrine_label;
+
+pg_dump -U deniauma -W -h 127.0.0.1 reiki -c -t 'vitrine*' > dump-postgres.sql
+
 
 ******************************************
 SASS
