@@ -1,0 +1,36 @@
+{% if status == "success" %}
+	<p class="success-msg">Votre message a été envoyé!</p>
+{% else %}
+	<form action ="{% url 'vitrine:create_appointment' %}" method="post">
+		{% csrf_token %}
+		<table>
+			{{ form }}
+			<tr><td id="form-submit" colspan="2"><input type="submit" value="Valider"></td></tr>
+		</table>
+	</form>
+	<script type="text/javascript">
+		$('#schedule-form form').submit(function(event) {
+			var formData = {
+				'appointment_date' : $('input[name=appointment_date]').val(),
+				'appointment_lastName' : $('input[name=appointment_lastName]').val(),
+				'appointment_firstName' : $('input[name=appointment_firstName]').val(),
+				'appointment_email' : $('input[name=appointment_email]').val(),
+				'appointment_phone' : $('input[name=appointment_phone]').val(),
+				'appointment_details' : $('textarea[name=appointment_details]').val()
+			}
+
+			$.ajax({
+				type: 'POST',
+				url: '{% url "vitrine:create_appointment" %}',
+				data: formData,
+				dataType: 'html',
+				encode: true
+			}).done(function(data) {
+				console.log(data);
+				$('#schedule-form').html(data);
+			});
+
+			event.preventDefault();
+		})
+	</script>
+{% endif %}
