@@ -187,6 +187,10 @@ ALTER TABLE public.vitrine_page OWNER TO deniauma;
 --
 
 COPY vitrine_appointment (id, start_date, end_date, validated, details, email, first_name, last_name, phone) FROM stdin;
+2	2015-08-28 13:00:00+02	2015-08-28 14:30:00+02	t	ioyiyiy	joselle.ichu@gmail.com	Joselle	Michu	04 45 78 96 52
+3	2015-08-28 17:00:00+02	2015-08-28 18:30:00+02	t	TEST	joselle.ichu@gmail.com	Joselle	Michu	04 45 78 96 52
+4	2015-08-29 12:30:00+02	2015-08-29 14:00:00+02	t		p.michu@test.fr	Patrcik	Michu	04 85 45 78 96
+1	2015-08-28 12:00:00+02	2015-08-28 12:59:00+02	f	rttr ertert	joselle.ichu@gmail.com	Joselle	Michu	04 45 78 96 52
 \.
 
 
@@ -194,7 +198,7 @@ COPY vitrine_appointment (id, start_date, end_date, validated, details, email, f
 -- Name: vitrine_appointment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deniauma
 --
 
-SELECT pg_catalog.setval('vitrine_appointment_id_seq', 1, false);
+SELECT pg_catalog.setval('vitrine_appointment_id_seq', 4, true);
 
 
 --
@@ -202,6 +206,7 @@ SELECT pg_catalog.setval('vitrine_appointment_id_seq', 1, false);
 --
 
 COPY vitrine_closingday (id, date, title) FROM stdin;
+1	2015-08-26	Absent
 \.
 
 
@@ -209,7 +214,7 @@ COPY vitrine_closingday (id, date, title) FROM stdin;
 -- Name: vitrine_closingday_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deniauma
 --
 
-SELECT pg_catalog.setval('vitrine_closingday_id_seq', 1, false);
+SELECT pg_catalog.setval('vitrine_closingday_id_seq', 1, true);
 
 
 --

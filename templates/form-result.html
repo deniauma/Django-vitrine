@@ -1,5 +1,5 @@
 {% if status == "success" %}
-	<p class="success-msg">Votre message a été envoyé!</p>
+	<p class="success-msg">Votre rendez-vous a été enregistré!</p>
 {% else %}
 	<form action ="{% url 'vitrine:send_email' %}" method="post">
 		{% csrf_token %}

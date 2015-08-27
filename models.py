@@ -54,7 +54,7 @@ class Navigation(models.Model):
 class Appointment(models.Model):
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
-    validated = models.BooleanField(default=False)
+    validated = models.BooleanField(default=True)
     last_name = models.CharField(max_length=50)
     first_name = models.CharField(max_length=50)
     email = models.EmailField()

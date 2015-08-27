@@ -14,6 +14,7 @@
 	<script src="{% static 'fullcalendar/lang/fr.js' %}"></script>
 	<link rel="stylesheet" href="{% static 'fancybox/source/jquery.fancybox.css' %}" type="text/css" media="screen" />
 	<script type="text/javascript" src="{% static 'fancybox/source/jquery.fancybox.pack.js' %}"></script>
+	<script type="text/javascript" src="{% static 'utils.js' %}"></script>
 {% endblock %}
 
 {% block page_content %}
@@ -23,37 +24,35 @@
 	{% endfor %}
 	<script>
 
+	function calendarFormInit() {
+			$('#schedule-form form').submit(function(event) {
+				var formData = {
+					'appointment_date' : $('input[name=appointment_date]').val(),
+					'appointment_lastName' : $('input[name=appointment_lastName]').val(),
+					'appointment_firstName' : $('input[name=appointment_firstName]').val(),
+					'appointment_email' : $('input[name=appointment_email]').val(),
+					'appointment_phone' : $('input[name=appointment_phone]').val(),
+					'appointment_details' : $('textarea[name=appointment_details]').val()
+				}
+
+				$.ajax({
+					type: 'POST',
+					url: '{% url "vitrine:create_appointment" %}',
+					data: formData,
+					dataType: 'html',
+					encode: true
+				}).done(function(data) {
+					console.log(data);
+					$('#schedule-form').html(data);
+				});
+
+				event.preventDefault();
+			})
+		}
+
 		$(document).ready(function() {
-			function getCookie(name) {
-			    var cookieValue = null;
-			    if (document.cookie && document.cookie != '') {
-			        var cookies = document.cookie.split(';');
-			        for (var i = 0; i < cookies.length; i++) {
-			            var cookie = jQuery.trim(cookies[i]);
-			            // Does this cookie string begin with the name we want?
-			            if (cookie.substring(0, name.length + 1) == (name + '=')) {
-			                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-			                break;
-			            }
-			        }
-			    }
-			    return cookieValue;
-			}
-
-			var csrftoken = getCookie('csrftoken');
-
-			function csrfSafeMethod(method) {
-			    // these HTTP methods do not require CSRF protection
-			    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-			}
-
-			$.ajaxSetup({
-			    beforeSend: function(xhr, settings) {
-			        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-			            xhr.setRequestHeader("X-CSRFToken", csrftoken);
-			        }
-			    }
-			});
+			formInit();
+			calendarFormInit();
 
 	        $(".fancylink").fancybox({
         		//maxWidth	: 400,
@@ -104,35 +103,39 @@
 
 			    dayClick: function(date, jsEvent, view) {
 			    	if (date.isAfter() && date.day() != 0) {
-			    		$("#id_appointment_date").val(date.format('DD/MM/YYYY HH:ss')).attr('readonly', true);
-			        	$(".fancylink").click();
-			    	};
+			    		var previousEvent= null;
+			    		var nextEvent= null;
+			    		$('#calendar').fullCalendar('clientEvents', function (event) {
+			    			if(event.end.hour() == date.hour())
+			    				previousEvent = event.end;
+			    			if(event.start.hour() == date.hour() || event.start.hour() == (date.hour()+1) )
+			    				nextEvent = event.start;
+			    		});
+			    		var isClickPossible = false;
+			    		if(previousEvent == null && nextEvent == null) {
+			    			isClickPossible = true;
+			    		}
+			    		else if(previousEvent == null && (nextEvent != null && nextEvent.hour() == date.hour()+1 && nextEvent.minutes() == 30)) {
+			    			isClickPossible = true;
+			    		}
+			    		else if(nextEvent == null) {
+			    			isClickPossible = true;
+			    			if(previousEvent.minutes() == 30)
+			    				date.minutes(30);
+			    		}
+			    		else if((previousEvent != null && previousEvent.minutes() == 0) && (nextEvent.hour == date.hour()+1 && nextEvent.minutes() == 30)) {
+			    			isClickPossible = true;
+			    		}
+			    		//if(previousEvent.minutes() == 30 && nextEvent.hour == date.hour()+1)
+
+			    		if(isClickPossible) {
+			    			$("#id_appointment_date").val(date.format('DD/MM/YYYY HH:mm')).attr('readonly', true);
+			        		$(".fancylink").click();
+			    		}
+			    	}
 			        
 			    }
 			});
-
-			$('#schedule-form form').submit(function(event) {
-				var formData = {
-					'appointment_date' : $('input[name=appointment_date]').val(),
-					'appointment_lastName' : $('input[name=appointment_lastName]').val(),
-					'appointment_firstName' : $('input[name=appointment_firstName]').val(),
-					'appointment_email' : $('input[name=appointment_email]').val(),
-					'appointment_phone' : $('input[name=appointment_phone]').val(),
-					'appointment_details' : $('textarea[name=appointment_details]').val()
-				}
-
-				$.ajax({
-					type: 'POST',
-					url: '{% url "vitrine:create_appointment" %}',
-					data: formData,
-					dataType: 'json',
-					encode: true
-				}).done(function(data) {
-					console.log(data);
-				});
-
-				event.preventDefault();
-			})
 			
 		});
 
@@ -158,7 +161,7 @@
 			<table>
 				{{ form.as_table }}
 			</table>
-			<input type="submit" value="Envoyer">
+			<input type="submit" value="Valider">
 		</form>
 	</div>
 	<div id="loading-form" style="display:none;">

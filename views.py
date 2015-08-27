@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from django.http import HttpResponseRedirect, JsonResponse
+from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from vitrine.models import Page, Navigation, Appointment, Label, ClosingDay
 from vitrine.forms import AppointmentForm, ContactForm
@@ -75,17 +75,28 @@ def create_appointment(request):
             phone = form.cleaned_data['appointment_phone']
             details = form.cleaned_data['appointment_details']
             start_date = date
-            end_date = date + timedelta(hours=1)
+            end_date = date + timedelta(hours=1, minutes=30)
             appointment = Appointment(start_date = start_date, end_date = end_date, last_name = last_name, first_name = first_name, email = email, phone = phone, details = details)
             appointment.save()
 
-            return JsonResponse({'created':'yes'})
+            return render(request, 'calendar-result.html', {
+                'form': form,
+                'status': "success",
+                })
 
         else:
-            return JsonResponse(form.errors.as_json(), safe=False)
+            return render(request, 'calendar-result.html', {
+                'form': form,
+                'status': "error",
+                'error_message': 'Le formulaire contient des erreurs!',
+            })
 
     else:
-        return JsonResponse({'created':'no', 'error':'not a POST request'})
+        return render(request, 'calendar-result.html', {
+            'form': form,
+            'status': "error",
+            'error_message': 'Une erreur technique est survenue!',
+        })
 
 
 def send_email(request):

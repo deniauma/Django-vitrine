@@ -2,6 +2,8 @@
 from django import forms
 
 class AppointmentForm(forms.Form):
+	error_css_class = "form-error"
+	required_css_class = "form-required"
 	appointment_date = forms.DateTimeField(label="Date du rendez-vous:", input_formats=['%d/%m/%Y %H:%M'])
 	appointment_lastName = forms.CharField(label="Nom:", max_length=50)
 	appointment_firstName = forms.CharField(label=u'Prénom:', max_length=50)

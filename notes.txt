@@ -33,7 +33,7 @@ url(r'^', include('vitrine.urls', namespace="vitrine")),
 
 ****************************************
 MySQL dump command:
-mysqldump -u root -p django_reiki vitrine_appointment vitrine_closingday vitrine_navigation vitrine_page vitrine_label > vitrine.sql
+mysqldump -u root -p reiki vitrine_appointment vitrine_closingday vitrine_navigation vitrine_page vitrine_label > vitrine.sql
 
 mysqldump --compatible=postgresql --default-character-set=utf8 -u root -p reiki vitrine_appointment vitrine_closingday vitrine_navigation vitrine_page vitrine_label > vitrine-mysql.sql
 
