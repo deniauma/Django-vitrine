@@ -191,6 +191,10 @@ COPY vitrine_appointment (id, start_date, end_date, validated, details, email, f
 3	2015-08-28 17:00:00+02	2015-08-28 18:30:00+02	t	TEST	joselle.ichu@gmail.com	Joselle	Michu	04 45 78 96 52
 4	2015-08-29 12:30:00+02	2015-08-29 14:00:00+02	t		p.michu@test.fr	Patrcik	Michu	04 85 45 78 96
 1	2015-08-28 12:00:00+02	2015-08-28 12:59:00+02	f	rttr ertert	joselle.ichu@gmail.com	Joselle	Michu	04 45 78 96 52
+5	2015-08-29 18:30:00+02	2015-08-29 20:00:00+02	t		mathieu.deniaud@gmail.com	mathieu	deniaud	06 76 41 73 12
+6	2015-08-29 20:00:00+02	2015-08-29 21:30:00+02	t		mathieu.deniaud@gmail.com	mathieu	deniaud	06 76 41 73 12
+7	2015-08-31 11:00:00+02	2015-08-31 12:30:00+02	t		mathieu.deniaud@gmail.com	mathieu	deniaud	06 76 41 73 12
+8	2015-08-31 20:00:00+02	2015-08-31 21:30:00+02	t		mathieu.deniaud@gmail.com	mathieu	deniaud	06 76 41 73 12
 \.
 
 
@@ -198,7 +202,7 @@ COPY vitrine_appointment (id, start_date, end_date, validated, details, email, f
 -- Name: vitrine_appointment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: deniauma
 --
 
-SELECT pg_catalog.setval('vitrine_appointment_id_seq', 4, true);
+SELECT pg_catalog.setval('vitrine_appointment_id_seq', 8, true);
 
 
 --
@@ -277,8 +281,8 @@ COPY vitrine_page (id, creation_date, last_modified, is_main_page, page_slug, pa
 2	2015-06-15 14:40:34+02	2015-06-15 14:40:34+02	f	presentation	index.html
 3	2015-06-15 14:43:01+02	2015-08-17 07:35:46+02	f	formation	formation.html
 4	2015-06-15 14:44:26+02	2015-08-17 07:35:58+02	f	espace-de-travail	espace.html
-5	2015-06-15 14:45:04+02	2015-06-16 14:45:04+02	f	seances-et-tarifs	calendar.html
 6	2015-06-15 14:45:55+02	2015-08-18 09:54:05+02	f	contact	contact.html
+5	2015-06-15 14:45:04+02	2015-08-29 16:10:12.584994+02	f	seances-et-tarifs	index.html
 \.
 
 

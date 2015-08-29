@@ -58,6 +58,13 @@ body {
 						display: block;
 					}
 
+                    .current {
+                        border-bottom-width: 1px;
+                        border-bottom-style: solid;
+                        padding-bottom: 3px;
+                        margin-bottom: -1px;
+                    }
+
 					a:link {
 						color: black;
 						text-decoration: none;
@@ -107,6 +114,7 @@ body {
 			float: left;
 			position: absolute;
 			z-index: 1;
+            padding-left: 5px;
 		}
 
 		aside {
@@ -326,9 +334,36 @@ html {
 
 			#main_menu {
 				float: none;
-				padding: 0 0 0 0;
+				padding: 0 0 0 10px;
 				margin: 0 0 0 0;
 				overflow: hidden;
+
+                li .current {
+                    border-bottom-style: none;
+
+                }
+
+                li a:link {
+                    text-decoration: underline;
+                    border-bottom-style: none;
+                }
+                a:visited {
+                    text-decoration: underline;
+                    border-bottom-style: none;
+                }
+
+                a:hover {
+                    text-decoration: underline;
+                    border-bottom-style: none;
+                    padding-bottom: 0px;
+                    margin-bottom: 0px;
+                    border-bottom-width: 0px;
+                }
+
+                a:active {
+                    text-decoration: underline;
+                    border-bottom-style: none;
+                }
 			}
 		}
 

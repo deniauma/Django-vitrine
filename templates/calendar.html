@@ -106,19 +106,21 @@
 			    		var previousEvent= null;
 			    		var nextEvent= null;
 			    		$('#calendar').fullCalendar('clientEvents', function (event) {
-			    			if(event.end.hour() == date.hour())
-			    				previousEvent = event.end;
-			    			if(event.start.hour() == date.hour() || event.start.hour() == (date.hour()+1) )
-			    				nextEvent = event.start;
+			    			if(event.start.day() == date.day()) {
+			    				if(event.end.hour() == date.hour())
+			    					previousEvent = event.end;
+			    				if(event.start.hour() == date.hour() || event.start.hour() == (date.hour()+1) )
+			    					nextEvent = event.start;
+			    			}
 			    		});
 			    		var isClickPossible = false;
-			    		if(previousEvent == null && nextEvent == null) {
+			    		if(previousEvent == null && nextEvent == null && date.hour() < 19) {
 			    			isClickPossible = true;
 			    		}
 			    		else if(previousEvent == null && (nextEvent != null && nextEvent.hour() == date.hour()+1 && nextEvent.minutes() == 30)) {
 			    			isClickPossible = true;
 			    		}
-			    		else if(nextEvent == null) {
+			    		else if(nextEvent == null && date.hour() < 19) {
 			    			isClickPossible = true;
 			    			if(previousEvent.minutes() == 30)
 			    				date.minutes(30);

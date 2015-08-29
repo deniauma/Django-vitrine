@@ -26,6 +26,11 @@ body {
           margin: 0 20px 0 0; }
           body div.wrapper nav #main_menu li a {
             display: block; }
+          body div.wrapper nav #main_menu li .current {
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            padding-bottom: 3px;
+            margin-bottom: -1px; }
           body div.wrapper nav #main_menu li a:link {
             color: black;
             text-decoration: none;
@@ -69,7 +74,8 @@ body {
       height = 247px;*/
       float: left;
       position: absolute;
-      z-index: 1; }
+      z-index: 1;
+      padding-left: 5px; }
     body div.wrapper aside {
       position: absolute;
       top: 0px;
@@ -247,9 +253,26 @@ html {
       height: 60px; }
       body div.wrapper nav #main_menu {
         float: none;
-        padding: 0 0 0 0;
+        padding: 0 0 0 10px;
         margin: 0 0 0 0;
         overflow: hidden; }
+        body div.wrapper nav #main_menu li .current {
+          border-bottom-style: none; }
+        body div.wrapper nav #main_menu li a:link {
+          text-decoration: underline;
+          border-bottom-style: none; }
+        body div.wrapper nav #main_menu a:visited {
+          text-decoration: underline;
+          border-bottom-style: none; }
+        body div.wrapper nav #main_menu a:hover {
+          text-decoration: underline;
+          border-bottom-style: none;
+          padding-bottom: 0px;
+          margin-bottom: 0px;
+          border-bottom-width: 0px; }
+        body div.wrapper nav #main_menu a:active {
+          text-decoration: underline;
+          border-bottom-style: none; }
 
   .portrait {
     width: 40%; } }
