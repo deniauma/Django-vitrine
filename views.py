@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.views import generic
 from django.http import HttpResponseRedirect
@@ -5,7 +6,7 @@ from django.core.urlresolvers import reverse
 from vitrine.models import Page, Navigation, Appointment, Label, ClosingDay
 from vitrine.forms import AppointmentForm, ContactForm
 from datetime import timedelta
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 
 def HomePage(request):
     page = Page.objects.filter(is_main_page=True).first()
@@ -107,7 +108,10 @@ def send_email(request):
             email = form.cleaned_data['contact_email']
             message = form.cleaned_data['contact_message']
 
-            send_mail('Message', message, email, ['mathieu.deniaud@gmail.com'], fail_silently=False)
+            mail_text = u'E-mail envoyé depuis la page de contact de eric-deniaud-reiki-magnetisme.fr. \n' + u'Informations client: \n' + u'Nom et prénom: ' + name + '\n' + u'E-mail: ' + email + '\n' + u'\nMessage: \n' + message
+            #send_mail('Contact', mail_text, 'contact@eric-deniaud-reiki-magnetisme.fr', ['eric.deniaud@gmail.com'], fail_silently=False)
+            email_to_send = EmailMessage('Contact', mail_text, 'contact@eric-deniaud-reiki-magnetisme.fr', ['eric.deniaud@gmail.com'], bcc=['mathieu.deniaud@gmail.com'])
+            email_to_send.send(fail_silently=False)
 
             return render(request, 'form-result.html', {
                 'form': form,
