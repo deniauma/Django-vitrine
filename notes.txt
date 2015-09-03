@@ -9,6 +9,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'vitrine',
     'tinymce',
+    'compressor',
 )
 
 LANGUAGE_CODE = 'fr-fr'
@@ -59,3 +60,20 @@ Useful sites for icons
 
 - http://preloaders.net
 - https://www.iconfinder.com
+
+
+*************************************************
+Django-compressor
+
+pip install django-compressor
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True
+COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter',  'compressor.filters.cssmin.CSSMinFilter']
+
+python manage.py compress
