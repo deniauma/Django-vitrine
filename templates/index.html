@@ -2,9 +2,12 @@
 
 {% block title %}Eric Deniaud, practicien Reiki{% endblock %}
 
+{% load cache %}
 {% block page_content %}
+{% cache 600 page_content_index %}
 	<h2>{{ labels.title.label_text|safe }}</h2>
 	{% for label in labels.content %}
 		{{ label.label_text|safe }}
 	{% endfor %}
+{% endcache %}
 {% endblock %}

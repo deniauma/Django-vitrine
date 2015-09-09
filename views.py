@@ -7,9 +7,15 @@ from vitrine.models import Page, Navigation, Appointment, Label, ClosingDay
 from vitrine.forms import AppointmentForm, ContactForm
 from datetime import timedelta
 from django.core.mail import EmailMessage
+from django.core.cache import cache
+
 
 def HomePage(request):
-    page = Page.objects.filter(is_main_page=True).first()
+    if not cache.get("homepage"):
+        page = Page.objects.filter(is_main_page=True).first()
+        cache.set("homepage", page)
+    else:
+        page = cache.get("homepage")
     return HttpResponseRedirect(reverse('vitrine:page', args=(page.page_slug,)))
 
 
@@ -25,19 +31,30 @@ class PageView(generic.DetailView):
         context = super(PageView, self).get_context_data(**kwargs)
 
         #retrieve all menu links and add them to context
+        '''if not cache.get("navigation"):
+            navigation_links = Navigation.objects.all().order_by('link_order')
+            cache.set("navigation", navigation_links)
+        else:
+            navigation_links = cache.get("navigation")'''
         navigation_links = Navigation.objects.all().order_by('link_order')
         context['navigation'] = navigation_links
         context['current_page'] = self.object.page_slug
 
         #retrieve all page labels and add them to context
-        page_labels = Label.objects.filter(label_page=self.object.id).order_by('label_place')
-        label_title = [l for l in page_labels if l.label_place == 'T']
-        label_contents = [l for l in page_labels if l.label_place[0] == 'C']
-        context_labels = {}
-        if label_title:
-            context_labels['title'] = label_title[0]
-        context_labels['content'] = label_contents
-        context['labels'] = context_labels
+        labels_cache_key = "labels-"+self.object.page_slug
+        labels_cache = cache.get(labels_cache_key)
+        if not labels_cache:
+            page_labels = Label.objects.filter(label_page=self.object.id).order_by('label_place')
+            label_title = [l for l in page_labels if l.label_place == 'T']
+            label_contents = [l for l in page_labels if l.label_place[0] == 'C']
+            context_labels = {}
+            if label_title:
+                context_labels['title'] = label_title[0]
+            context_labels['content'] = label_contents
+            cache.set(labels_cache_key, context_labels)
+            context['labels'] = context_labels
+        else:
+            context['labels'] = labels_cache
 
         if self.object.page_slug == "contact":
             contactForm = ContactForm()

@@ -1,6 +1,10 @@
 from django.db import models
 from django.utils.text import slugify
 from tinymce.models import HTMLField
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
 
 # Create your models here.
 class Page(models.Model):
@@ -65,3 +69,17 @@ class Appointment(models.Model):
 class ClosingDay(models.Model):
     date = models.DateField()
     title = models.CharField(max_length=20)
+
+
+@receiver(post_save, sender=Label)
+def invalidate_cache_label(sender, instance, **kwargs):
+    cache.delete('labels-'+instance.label_page.page_slug)
+    print instance.label_page.page_template.rstrip('.html')
+    key = make_template_fragment_key('page_content_'+instance.label_page.page_template[:-5])
+    cache.delete(key)
+
+
+@receiver(post_save, sender=Navigation)
+def invalidate_cache_navigation(sender, **kwargs):
+    key = make_template_fragment_key('main_menu')
+    cache.delete(key)

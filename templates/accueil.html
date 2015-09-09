@@ -2,11 +2,14 @@
 
 {% block title %}Eric Deniaud, practicien Reiki{% endblock %}
 {% load staticfiles %}
+{% load cache %}
 {% block page_content %}
+{% cache 600 page_content_accueil %}
 	<h2><span class="quote">Être libre de toute douleur physique et émotionnelle.</span></h2>
 	<img class="portrait" src="{% static 'img/eric.jpg' %}" alt="Espace de travail" width="200" />
 
 	{% for label in labels.content %}
 		{{ label.label_text|safe }}
 	{% endfor %}
+{% endcache %}
 {% endblock %}
