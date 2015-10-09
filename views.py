@@ -29,6 +29,12 @@ class PageView(generic.DetailView):
         context['navigation'] = navigation_links
         context['current_page'] = self.object.page_slug
 
+        #retrieve all meta tags information
+        meta = {}
+        meta['title'] = self.object.meta_title
+        meta['description'] = self.object.meta_description
+        context['meta'] = meta
+
         #retrieve all page labels and add them to context
         page_labels = Label.objects.filter(label_page=self.object.id).order_by('label_place')
         label_title = [l for l in page_labels if l.label_place == 'T']

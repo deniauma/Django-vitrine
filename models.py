@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from django.utils.text import slugify
 from tinymce.models import HTMLField
@@ -9,6 +10,9 @@ class Page(models.Model):
     last_modified = models.DateTimeField(auto_now=True)
     is_main_page = models.BooleanField(default=False)
     page_template = models.CharField(max_length=200, default='index.html')
+    meta_title = models.CharField(max_length=200, default=u"Eric Deniaud, practicien Reiki et magnétiseur")
+    meta_description = models.CharField(max_length=200, default=u"Être libre de toute douleur physique et émotionnelle. Espace de travail. A l'heure où l'être humain recherche le naturel, le Reiki et le Magnétisme répondent à cette attente légitime.")
+
     def __unicode__(self):
         return self.page_slug
 
