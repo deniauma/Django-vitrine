@@ -42,7 +42,7 @@ mysqldump --compatible=postgresql --default-character-set=utf8 -u root -p reiki 
 
 drop table vitrine_appointment, vitrine_closingday, vitrine_navigation, vitrine_page, vitrine_label;
 
-pg_dump -U deniauma -W -h 127.0.0.1 reiki -c -t 'vitrine*' > dump-postgres.sql
+pg_dump -U deniauma -W -h 127.0.0.1 reiki -a -t 'vitrine*' > dump-postgres.sql
 
 
 ******************************************
