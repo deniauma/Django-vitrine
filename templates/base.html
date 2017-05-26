@@ -1,22 +1,22 @@
 <!doctype html>
 <head>
 	<meta charset="utf-8">
-	
+
 	<!-- Always force latest IE rendering engine (even in intranet) -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	
+
 	<!-- Important stuff for SEO, don't neglect. (And don't dupicate values across your site!) -->
 	<title>{% block title %}{{ meta.title }}{% endblock %}</title>
 	<meta name="author" content="" />
 	<meta name="description" content="{% block description %}{{ meta.description }}{% endblock %}" />
-	
+
 	<!-- Don't forget to set your site up: http://google.com/webmasters -->
 	<meta name="google-site-verification" content="" />
 	<meta name="keywords" content="magnétiseur, guérisseur, paranormal, psycho énergéticien, problème psychologique, thérapeute, magnétisme, dépression, anxiété;, eczéma, zona, rhumatisme, psoriasis, purpura acné, brûlure, mycose, asthme, rhumatologie, traumatologie, troubles digestifs, radiesthésiste, verrues, divorce, rencontre, sexualité, migraine, agitation, nervosité, angoisse, anxiété, dépression, émotivité, insomnie, perturbation et échec scolaire, conflit parentale, éducation, alcoolisme, violence et maltraitance, stress, harcèlement, rééquilibre d'entreprise, purification habitation et exploitation, désenvoûtement, préparation d'examen, confiance en soi, médium, medium, Angers, Nantes, La Rochelle, Ancenis, Châteaubriant, Laval, Le Mans, La Roche sur Yon, Cholet, Saumur, Maine et Loire, Loire Atlantique, Vendée, Charente, Mayenne, Sarthe, Bretagne, Pays de la Loire, Ouest, 44, 49, 53, 72, 17, 22, 56, 85, 35, 29">
-	
+
 	<!-- Who owns the content of this site? -->
 	<meta name="Copyright" content="" />
-	
+
 	<!--  Mobile Viewport
 	http://j.mp/mobileviewport & http://davidbcalhoun.com/2010/viewport-metatag
 	device-width : Occupy full width of the screen in its current orientation
@@ -38,8 +38,8 @@
 
 	<!-- Application-specific meta tags -->
 	<!-- Windows 8: see http://msdn.microsoft.com/en-us/library/ie/dn255024%28v=vs.85%29.aspx for details -->
-	<meta name="application-name" content="" /> 
-	<meta name="msapplication-TileColor" content="" /> 
+	<meta name="application-name" content="" />
+	<meta name="msapplication-TileColor" content="" />
 	<meta name="msapplication-TileImage" content="" />
 	<meta name="msapplication-square150x150logo" content="" />
 	<meta name="msapplication-square310x310logo" content="" />
@@ -70,7 +70,7 @@
 			{% endfor %}
 		</ul>
 	</nav>
-	<article>	
+	<article>
 	{% block page_content %}
 	{% endblock %}
     </article>
@@ -82,6 +82,8 @@
 		<br/><br/><a class="left-menu-link" href="{% url 'vitrine:page' 'contact' %}#contact-me">Me contacter</a>
 		<br/><br/>Je consulte du lundi au samedi, de 8h à 20h
 		<br/>Siret: 529 351 009 00012</p>
+		<script type="text/javascript" src="//clicrdv-assets.s3.amazonaws.com/lib/clicrdv-widgets-v1/clicrdv-widgets-min.js"></script>
+		<script type="text/javascript">CLICRDV.renderWidget('link','deniaud-eric-ae',{"style":"clicrdv-button-style5","button_bg_color":"#8ab800"});</script>
 		<hr>
 		<h3 class="follow">Suivez-moi sur:</h3>
 		<p><a href="https://www.facebook.com/pages/%C3%89ric-Deniaud-Magn%C3%A9tiseur/325667220917307" target="_blank"><img src="{% static 'img/facebook.png' %}" class="facebook" alt="facebook" width="32px"></a>
@@ -113,4 +115,3 @@
 </div>
 </body>
 </html>
-
